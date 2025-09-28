@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu -momento</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #c1121f;
+  --text: #222;
+  --muted: #555;
+  --bg: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  text-align: center;
+  padding: 30px 20px 10px;
+}
+header h1 { color: var(--primary); margin-bottom: 8px; }
+header p { color: var(--muted); margin-top: 0; }
+
+.container {
+  display: flex;
+  min-height: calc(100vh - 120px);
+}
+
+.sidebar {
+  width: 220px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-right: 1px solid #eee;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 12px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar a.active, .sidebar a:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.category {
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.category.active {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+.item {
+  background: rgba(255,255,255,0.95);
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.item-title { font-weight: 700; font-size: 16px; }
+.price { float: right; color: var(--primary); font-weight: 700; margin-left: 8px; }
+.desc { margin-top: 4px; font-size: 14px; color: var(--muted); }
+
+footer { text-align: center; font-size: 12px; color: #888; padding: 20px; }
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Notre Menu</h1>
+  <p>Sélectionnez une catégorie à gauche pour voir tous les plats</p>
+</header>
+
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <li><a href="#" class="active" data-cat="sburger">Smash burger</a></li>
+      <li><a href="#" data-cat="burger">Burger</a></li>
+      <li><a href="#" data-cat="pasta">Pasta Bowl</a></li>
+      <li><a href="#" data-cat="pizza">Pizza</a></li>
+      <li><a href="#" data-cat="salades">Salades</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <!-- Smash BURGER -->
+    <div class="category active" id="sburger">
+      <h2>Smash burger</h2>
+      <div class="grid">
+        <div class="item"><div class="item-title">Smash classic<span class="price">7,90 €</span></div><div class="desc">Salade, oignons caramélisés, un steaks maison, cheddar, sauce burger maison.</div></div>
+        <div class="item"><div class="item-title">smash iconic<span class="price">8,90 €</span></div><div class="desc">Salade, oignons caramélisés, 2 steaks pur bœuf français smashés, 2 tranches de cheddar, sauce burger maison.</div></div>
+        <div class="item"><div class="item-title">Smash Gourmet<span class="price">10,90 €</span></div><div class="desc">Salade, oignons caramélisés, 2 steaks pur bœuf français smashés, 2 tranches d'emmental, sauce truffée maison.</div></div>
+        <div class="item"><div class="item-title">Smash Chicken<span class="price">8,90 €</span></div><div class="desc">Salade, oignons caramélisés, 2 sfilets de poulet smashés, 2 tranches d'emmental, sauce magreb maison.</div></div>
+        <div class="item"><div class="item-title">Smash bacon<span class="price">9,50 €</span></div><div class="desc">Salade, oignons caramélisés, 2 steaks pur bœuf français smashés, 2 tranches de cheddar, 2 bacon de bœuf snacké, sauce beconaise.</div></div>
+        <br/><br/><div class="item"><div class="item-title">En Menu<span class="price">+ 3 €</span></div><div class="desc">frites maison et boisson 33 cl.</div></div>
+        <!-- Ajouter tous les autres burgers ici -->
+      </div>
+    </div>
+
+
+     <!-- BURGER -->
+     <div class="category" id="burger">
+      <h2>BURGER</h2>
+      <div class="grid">
+        <div class="item"><div class="item-title">Big Mak Burger<span class="price">8,90 €</span></div><div class="desc">Salade, cornichons, 1 steaks (150 g), cheddar, cornichons, biggy burger.</div></div>
+        <div class="item"><div class="item-title">Big Burger<span class="price">9,50 €</span></div><div class="desc">salade, oignons caramélisés, cornichons, 1 steak (180 g), cheddar et sauce aux choix.</div></div>
+
+        <div class="item"><div class="item-title">Double Cheese Burger<span class="price">11,50 €</span></div><div class="desc">2 steaks (240), cheddar, cornichons, sauce ketchup et moutarde. Avec frites et boisson.</div></div>
+        <div class="item"><div class="item-title">Chicken Burger<span class="price">7,90 €</span></div><div class="desc">Salade, oignons caramélisés, Filet de poulet pané, cheddar, sauce magreb.</div></div>
+        <div class="item"><div class="item-title">Montagnard Burger<span class="price">13 €</span></div><div class="desc">Salade, cornichons, oignons caramélisés, Steak 180 g, lardons, raclette, croquettes.</div></div>
+        <div class="item"><div class="item-title">Fishans ships Burger<span class="price">9,90 €</span></div><div class="desc">Salade, fish, cheddar, sauce tartare.</div></div>
+        <div class="item"><div class="item-title">Signature mercato Burger<span class="price">13,70 €</span></div><div class="desc">Pain croissant, Salade, cornichons, oignons caramélisés, Steak 180 g, lardons, raclette, croquettes, sauce beconaise.</div></div>
+        <div class="item"><div class="item-title">En Menu<span class="price">+ 3 €</span></div><div class="desc">frites maison et boisson 33 cl.</div></div>
+        <!-- Ajouter tous les autres focazzina ici -->
+      </div>
+    </div>
+
+    <!-- FOCAZZINA -->
+    <div class="category" id="focazzina">
+      <h2>Focazzina</h2>
+      <div class="grid">
+        <div class="item"><div class="item-title">Focazzina Reine <span class="price">7€</span></div><div class="desc">Tomate, Mozzarella, Jambon, Champignons</div></div>
+        <div class="item"><div class="item-title">Focazzina 4 Saisons <span class="price">7€</span></div><div class="desc">Tomate, Mozzarella, Champignons, Oignons Rouges, Poivrons, Tomates Confites</div></div>
+        <!-- Ajouter tous les autres focazzina ici -->
+      </div>
+    </div>
+
+    <!-- PIZZA -->
+    <div class="category" id="pizza">
+      <h2>Pizza</h2>
+      <div class="grid">
+        <div class="item"><div class="item-title">MARGHERITA <span class="price">10€</span></div><div class="desc">Sauce tomate, Mozzarella, basilic, filet huile d'olive.</div></div>
+        <div class="item"><div class="item-title">Positano <span class="price">12€</span></div><div class="desc">Sauce tomate, Mozzarella, tomates cerise, olives, câpres, anchois, filet huile d'olive</div></div>
+        <div class="item"><div class="item-title">Tonno <span class="price">10€</span></div><div class="desc">Sauce tomate - Mozzarella - basilic - filet huile d'olive</div></div>
+        <div class="item"><div class="item-title">REGINA <span class="price">14€</span></div><div class="desc">Sauce tomate, Mozzarella, jambon de dinde fumé - champignons - tomates cerise - olives - basilic - filet huile d'olive</div></div>
+        <div class="item"><div class="item-title">VEGETARIANA <span class="price">13€</span></div><div class="desc">Sauce tomate - mozzarella - aubergines grillés - poivrons - oignons - champignons - artichauts - courgettes grillés- filet huile d'olive</div></div>
+        <div class="item"><div class="item-title">Lovina <span class="price">15€</span></div><div class="desc">Sauce tomate / sauce blanche - mozzarella - viandes hachées - peppéronis - poivrons - oignons - olives - tomates cerise - basilic - filet huile d'olive</div></div>
+        <div class="item"><div class="item-title">TARTUFO <span class="price">16€</span></div><div class="desc">Base sauce crème et champignons à l'huile de truffe, mozzarella, Burrata à la truffes.</div></div>
+        <div class="item"><div class="item-title">BURRATA <span class="price">16€</span></div><div class="desc">Sauce tomate, burrata, jambon fumé, roquettes, tomates cerise, olives, filet huile d'olive, copeaux de parmesan</div></div>
+        <div class="item"><div class="item-title">5 FROMAGES <span class="price">15€</span></div><div class="desc">Sauce tomate / blanche - fromages du marché - tomates cerise - basilic - filet huile d'olive</div></div>
+        <div class="item"><div class="item-title">SAUMON <span class="price">11.5€</span></div><div class="desc">Base Avocat, mozzarella, saumon fumé, roquettes, tomates cerise, filet huile d'olive</div></div>
+        <div class="item"><div class="item-title">Savoyarde <span class="price">15.5€</span></div><div class="desc">Crème fraîche, mozzarella, lardons, pommes de terre, reblochons, oignons.</div></div>
+        <div class="item"><div class="item-title">Boisée <span class="price">14.5€</span></div><div class="desc">Crème fraîche, poulet, champignons, mozzarella, sauce fromagaire.</div></div>
+        <div class="item"><div class="item-title">Cartagienne <span class="price">16.50€</span></div><div class="desc">Sauce base bel salsa, légumes michwi, Câpres, mozzarella, thon, oeuf.</div></div>
+        <!-- Ajouter toutes les autres pizzas ici -->
+      </div>
+    </div>
+
+  
+
+     <!-- PASTA -->
+     <div class="category" id="pasta">
+      <h2>Pasta Bowl</h2>
+      <div class="grid">
+        <div class="item"><div class="item-title">Spaghetti à la bolognaise <span class="price">12,90 €</span></div><div class="desc"></div></div>
+        <div class="item"><div class="item-title">Penne au 5 fromages <span class="price">12,90 €</span></div><div class="desc"></div></div>
+        <div class="item"><div class="item-title">Rigatoni Burrata Pesto<span class="price">12,90 €</span></div><div class="desc">Sauce pesto, burrata / à la truffe (+3€), parmesan</div></div>
+        <!-- Ajouter tous les autres pasta bowls ici -->
+      </div>
+    </div>
+
+    
+    
+
+
+    <!-- SALADES -->
+    <div class="category" id="salades">
+      <h2>Salades</h2>
+      <div class="grid">
+        <div class="item"><div class="item-title">Salade César <span class="price">8,90 €</span></div><div class="desc">Laitue, tomates, oignons rouges, parmesan, croûtons et poulet pané.</div></div>
+        <div class="item"><div class="item-title">Salade chèvre chaud <span class="price">8,90 €</span></div><div class="desc">Laitue, concombre, croûtons, cornichons, noix, crottin de chèvre et miel.</div></div>
+        <div class="item"><div class="item-title">Salade lyonnaise<span class="price">8,90 €</span></div><div class="desc">Salade, tomate, oeuf poché, lardon, croûtons.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>— Bon appétit ! —</footer>
+
+<script>
+const links = document.querySelectorAll('.sidebar a');
+const categories = document.querySelectorAll('.category');
+
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = link.dataset.cat;
+
+    links.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+
+    categories.forEach(cat => {
+      if(cat.id === target){
+        cat.classList.add('active');
+      } else {
+        cat.classList.remove('active');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
